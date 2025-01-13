@@ -16,7 +16,7 @@ print(lst2)
 [1, 2, 2, 3, 5, 4, 6]
 ['Red', 'Green', 'Blue']
 ```
-
+  
 ### List Length
 ```python
 # To determine how many items a list has, use the len() function
