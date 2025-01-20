@@ -45,26 +45,27 @@ class Marks(Student):
        
        
 class Student_profile(Marks):    
-    def printDetails(self):
-        details = f"Name: {self.name}\n"
-        for subject, mark in self.marks.items():
-            details += f"  {subject}: {mark}\n"
-        details += f"Total Percentage: {self.percentage():.2f}%\n"
-        details += f"Grade: {self.grade()}"
-        return details
+
+    def overallprofile(self):
+        data = f'''
+            Student Name: {self.name}
+            Marks: {self.marks}
+            Percentage: {self.percentage()}%
+            Grade: {self.grade()}
+            '''
+        return data
+
    
- 
-def get_input():
-    name = input("Enter your name: ")
-    marks={}
-    for _ in range(3):
-        sub = input("Enter subject name: ")
-        mark = int(input("Enter marks: "))
-        marks[sub] = mark
-       
-    return name, marks
- 
-name, marks = get_input()
-student = Student_profile(name, **marks)
-print(student.printDetails())
-        
+total_subjects = int(input("Enter total number of subjects: "))
+student_name = input("Enter student name: ")
+student_marks = {}
+
+
+for i in range(total_subjects):
+    subject_name = input("Enter subject name: ")
+    subject_marks = int(input(f'Enter  {subject_name} marks: '))
+    student_marks[subject_name] = subject_marks
+    print("-------------------------------")
+
+obj = Student_profile(student_name, **student_marks)
+print(obj.overallprofile())      
