@@ -50,3 +50,12 @@ ModuleNotFoundError	: Raised when a module cannot be found.
 '''
 
 
+# file handling
+
+##exception handling
+# try:
+#     f = open("day.py", 'r')
+#     print(f.read())
+# except FileNotFoundError as e:
+#     print("file doesot found")
+    
