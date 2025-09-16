@@ -1,37 +1,42 @@
 import random
-a= "rock","paper","scissors"  
-i=1
- 
-y=0
-z=0
-while i==True:
-    b=input("enter ur answer(rock paper or scissors)\n").strip().lower()
-    c=random.choice(a)
-    print(f"I choose {c}")
-    if b==c:
-        print("its a draw\n")
-        print("the score is {z}vs{y}")
-    elif c=="scissors" and b=="prper" or c=="rock" and b=="scissors" or c=="paper" and b=="rock":
-        print("You Loose\n")
-        z+=1
-        y-=1
-        print("the score is {z}vs{y}")
-    elif b=="rock" and c=="scissors" or b=="scissors" and c=="paper" or b=="paper" and c=="rock":
-        print("You Loose\n")
-        y+=1
-        z-=1
-        print("the score is {z}vs{y}")
+
+choices = ("rock", "paper", "scissors")
+player_score = 0
+computer_score = 0
+
+while True:
+    user_choice = input("Enter your choice (rock, paper, or scissors): ").strip().lower()
+    computer_choice = random.choice(choices)
+    print(f"I choose {computer_choice}")
+
+    if user_choice == computer_choice:
+        print("It's a draw!")
+    elif (computer_choice == "scissors" and user_choice == "paper") \
+         or (computer_choice == "rock" and user_choice == "scissors") \
+         or (computer_choice == "paper" and user_choice == "rock"):
+        print("You Lose!")
+        computer_score += 1
+    elif (user_choice == "rock" and computer_choice == "scissors") \
+         or (user_choice == "scissors" and computer_choice == "paper") \
+         or (user_choice == "paper" and computer_choice == "rock"):
+        print("You Win!")
+        player_score += 1
     else:
-        print("Invalid Input\n")
-    if z==10:
-        print(f"You Loose,the score is {z}vs{y}")
-    elif y==10:
-        print("You Win")
-    else:
-        d=input("wanna continue?reply in y or n for yes or no\t").strip().lower()
-        if d== "n"  :
-            print("Thank you for playing, your score against the computer was  {z}:{y}")
-            break
-        else:
-            continue
-        
+        print("Invalid Input, try again.")
+        continue  # skip score check if invalid input
+
+    print(f"Score: Computer {computer_score} vs You {player_score}")
+
+    # Check if someone reached 5
+    if computer_score == 5:
+        print(f"Game Over! You Lose. Final score: Computer {computer_score} vs You {player_score}")
+        break
+    elif player_score == 5:
+        print(f"Congratulations! You Win. Final score: Computer {computer_score} vs You {player_score}")
+        break
+
+    # Ask to continue
+    cont = input("Wanna continue? (y/n): ").strip().lower()
+    if cont == "n":
+        print(f"Thank you for playing! Final score: Computer {computer_score} vs You {player_score}")
+        break
